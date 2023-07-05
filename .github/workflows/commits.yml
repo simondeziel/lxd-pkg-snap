@@ -6,11 +6,10 @@ permissions:
   contents: read
 
 jobs:
-  dco-check:
+  commit-checks:
     permissions:
-      pull-requests: read  # for tim-actions/get-pr-commits to get list of commits from the PR
-    name: Signed-off-by (DCO)
-    runs-on: ubuntu-20.04
+      pull-requests: read  # to get list of commits from the PR
+    runs-on: ubuntu-22.04
     steps:
     - name: Get PR Commits
       id: 'get-pr-commits'
@@ -18,17 +17,11 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Check that all commits are signed-off
+    - name: Signed-off-by (DCO)
       uses: tim-actions/dco@master
       with:
         commits: ${{ steps.get-pr-commits.outputs.commits }}
 
-  target-branch:
-    permissions:
-      contents: none
-    name: Branch target
-    runs-on: ubuntu-20.04
-    steps:
     - name: Check branch target
       env:
         TARGET: ${{ github.event.pull_request.base.ref }}
