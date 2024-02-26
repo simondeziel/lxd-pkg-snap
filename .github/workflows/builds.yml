@@ -41,7 +41,14 @@ jobs:
         with:
           go-version: 1.21.x
 
-      - name: Trigger Launchpad snap build
+      - name: Remove docker
+        run: |
+          set -eux
+          sudo apt-get autopurge -y containerd.io moby-containerd docker docker-ce podman uidmap
+          sudo ip link delete docker0
+          sudo nft flush ruleset
+
+      - name: Prepare snap build
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
           TARGET: ${{ github.ref_name }}
@@ -64,4 +71,29 @@ jobs:
           git add --all
           git commit --all --quiet -s --allow-empty -m "Automatic upstream build (${TARGET})" -m "Upstream commit: ${localRev}"
           git show
+
+          sudo snap install --classic go
+          sudo snap install lxd --channel latest/edge || snap refresh lxd --channel latest/edge
+          sudo snap list lxd
+          sudo adduser "$USER" lxd
+          sudo lxd init --auto --storage-backend=zfs --storage-create-loop=10
+
+          snap list --all
+
+      - name: QA snap build
+        run: |
+          set -eux
+          cd ~/lxd-pkg-snap-lp/
+          time snapcraft
+
+          lint="$(snapcraft lint --quiet lxd_*.snap 2>&1 >/dev/null)"
+
+          echo "${lint}"
+
+      - name: Trigger Launchpad snap build
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          TARGET: ${{ github.ref_name }}
+        run: |
+          set -eux
           git push --quiet
