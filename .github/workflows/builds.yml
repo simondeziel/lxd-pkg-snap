@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - latest-edge
+      - build-snap
 
 permissions:
   contents: read
