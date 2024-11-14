@@ -1489,6 +1489,7 @@ parts:
       git cherry-pick -x c94652490e8bf302ff63e199ce9bbacc11a50a29 # lxd/apparmor/instance_lxc: allow procfs for unprivileged containers
       git cherry-pick -x 9365358d847fac1ce83329801f5b78374bb6726f # lxd/apparmor/instance_lxc: allow sysfs for unprivileged containers
       git cherry-pick -x c802b03b89a03a4bb697621993740fc2312b85d8 # lxd/storage/drivers/powerflex: Use the Net* response variables for pool stats
+      git cherry-pick -x e796ed874b32493347de3d179565781798eea16f # lxd: Refresh the state on cluster put/join
 
 
       # Setup build environment
