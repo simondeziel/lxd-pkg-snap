@@ -1404,9 +1404,9 @@ parts:
 
   lxcfs:
     source: https://github.com/lxc/lxcfs
+    source-commit: 5df434be88d69406985083a2f591278034a7227b # v6.0.2
     source-depth: 1
     source-type: git
-    source-tag: v6.0.0
     build-packages:
       - libfuse3-dev
       - libpam0g-dev
