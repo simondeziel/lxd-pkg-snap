@@ -1348,9 +1348,9 @@ parts:
     after:
       - apparmor
     source: https://github.com/lxc/lxc
+    source-commit: 2444f5841444a0a33705e2418727c23c1f167d1e # v6.0.2
     source-depth: 1
     source-type: git
-    source-tag: v6.0.0
     build-packages:
       - dpkg-dev
       - libcap-dev
