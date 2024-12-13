@@ -1189,8 +1189,8 @@ parts:
 
   zfs-0-8:
     source: https://github.com/openzfs/zfs
+    source-commit: 2bc66898b7056140108a4937a6557d9fe27cafc6 # zfs-0.8.6
     source-depth: 1
-    source-tag: zfs-0.8.6
     source-type: git
     plugin: autotools
     autotools-configure-parameters:
@@ -1224,8 +1224,8 @@ parts:
 
   zfs-2-1:
     source: https://github.com/openzfs/zfs
+    source-commit: fb6d532066f23458f768a97ae94b158c42cbe484 # zfs-2.1.15
     source-depth: 1
-    source-tag: zfs-2.1.15
     source-type: git
     plugin: autotools
     autotools-configure-parameters:
