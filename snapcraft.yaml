@@ -795,8 +795,8 @@ parts:
 
   spice-protocol:
     source: https://gitlab.freedesktop.org/spice/spice-protocol
+    source-commit: 6f453a775d87087c6ba59fc180c1a1e466631a47 # v0.14.4
     source-depth: 1
-    source-tag: v0.14.4
     source-type: git
     plugin: meson
     prime: []
