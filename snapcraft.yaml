@@ -620,7 +620,7 @@ parts:
   nasm:
     source: https://github.com/netwide-assembler/nasm
     source-depth: 1
-    source-tag: nasm-2.16.03
+    source-commit: cd37b81b320ead83ca5a6bbce5da0a6456663bc6 # nasm-2.16.03
     source-type: git
     plugin: autotools
     autotools-configure-parameters:
@@ -715,7 +715,7 @@ parts:
     source-commit: fa66e4cd562804509055e44a88f666673e6d27c0 # v1.17.2
     source-type: git
     build-snaps:
-      - go
+      - go/1.23/stable
     plugin: make
     override-prime: |-
       [ "$(uname -m)" != "x86_64" ] && [ "$(uname -m)" != "aarch64" ] && [ "$(uname -m)" != "ppc64le" ] && [ "$(uname -m)" != "s390x" ] && exit 0
@@ -890,7 +890,7 @@ parts:
       - spice-protocol
       - spice-server
     source: https://git.launchpad.net/ubuntu/+source/qemu
-    source-commit: 00b8bba93d55baefdc68d06e6ab78934825a32b7 # import/1%8.2.2+ds-0ubuntu1.4
+    source-commit: 50a4fe555e21d4b633580d63ae45e807de9e2f91 # import/1%8.2.2+ds-0ubuntu1.5
     source-depth: 1
     source-type: git
     plugin: autotools
@@ -1477,7 +1477,7 @@ parts:
     source: https://github.com/canonical/lxd
     # XXX: We often cherry-pick for candidate builds so don't do shallow clone
     #source-depth: 1
-    source-commit: 4de9eb4ac43983fdc8583c4609ad28f933b78c3e # Pre-LXD 5.21.3
+    source-commit: c13ce57aa9ef16693caae30f6c8e878ab5a4c96e # Pre-LXD 5.21.3
     source-type: git
     after:
       - lxc
