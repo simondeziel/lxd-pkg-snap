@@ -30,4 +30,10 @@ if [ -x "${SNAP_COMMON}/lxd.debug" ]; then
     LXD="${SNAP_COMMON}/lxd.debug"
 fi
 
+# If GODEBUG is not set, use it to disable MLKEM/Kyber PQ curves.
+# This reduces the TLS handshake size to avoid connectivity issue in presence of PMTU blackholes.
+if [ -z "${GODEBUG:-""}" ]; then
+    export GODEBUG="tlskyber=0,tlsmlkem=0"
+fi
+
 exec "${LXD}" "$@"
