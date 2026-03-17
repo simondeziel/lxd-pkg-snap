@@ -11,7 +11,7 @@ fi
 
 echo reload > "${SNAP_COMMON}/state"
 read -r PID < "${SNAP_COMMON}/lxd.pid"
-kill "$PID"
+kill -HUP "$PID"
 
 # Wait for the old daemon to exit so that callers don't
 # race with a dying daemon when checking readiness.
