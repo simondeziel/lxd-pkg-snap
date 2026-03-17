@@ -13,4 +13,4 @@ echo 1 > "${SNAP_COMMON}/use-qemu-external-snap"
 
 echo reload > "${SNAP_COMMON}/state"
 read -r PID < "${SNAP_COMMON}/lxd.pid"
-kill "$PID"
+kill -HUP "$PID"
